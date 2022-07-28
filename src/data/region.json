@@ -1,0 +1,14 @@
+[
+    {
+        "name": "National",
+        "id": 1
+    },
+    {
+        "name": "Regional",
+        "id": 2
+    },
+    {
+        "name": "Global",
+        "id": 3
+    }
+]

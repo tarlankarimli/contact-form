@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Automotive",
+        "id": 1
+    },
+    {
+        "name": "Banking",
+        "id": 2
+    },
+    {
+        "name": "Consulting",
+        "id": 3
+    },
+    {
+        "name": "Finance",
+        "id": 4
+    },
+    {
+        "name": "Healthcare",
+        "id": 5
+    },
+    {
+        "name": "Media/PR",
+        "id": 6
+    },
+    {
+        "name": "Retail",
+        "id": 7
+    },
+    {
+        "name": "Technology",
+        "id": 8
+    },
+    {
+        "name": "Telecommunication",
+        "id": 9
+    },
+    {
+        "name": "Other",
+        "id": 10
+    }
+]
