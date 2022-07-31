@@ -1,5 +1,6 @@
-import ContactUs from "views/ContactUs";
 import { Routes, Route } from "react-router-dom";
+
+import ContactUs from "views/ContactUs/Page";
 
 function App() {
   return (
