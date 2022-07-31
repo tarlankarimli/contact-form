@@ -55,3 +55,15 @@ export interface IRestClient {
     config?: AxiosRequestConfig
   ) => Promise<TResponseData>;
 }
+
+
+/** Select field model */
+export interface ISelectField {
+  [key: string]: {
+      placeholder?: string;
+      label?: string;
+      eventname?: string;
+      service?: () => {};
+      component?: React.ComponentType<any>;
+  };
+}

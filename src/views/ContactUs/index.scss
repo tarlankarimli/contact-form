@@ -43,8 +43,7 @@
     width: 50%;
     margin-bottom: 4rem;
 
-    input,
-    select {
+    input {
       width: 90%;
       height: 4.8rem;
       border: none;
@@ -119,4 +118,15 @@
     transform: scaleX(0);
     transform-origin: bottom left;
   }
+}
+.form-contact-container {
+  // .hello {
+  //   height: 4.8rem;
+  //   border: none;
+  //   border-bottom: 1px solid $color-black;
+  //   background-color: $contactus-bg-color;
+  //   outline: none;
+    font-size: 1.6rem;
+ 
+  // }
 }

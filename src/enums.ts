@@ -17,3 +17,10 @@
     /** Request resolved successfully. */
     SUCCESS = "SUCCESS",
   }
+
+  /** Select fields */
+export enum ESelectFields {
+  country = "country",
+  industry = "source",
+  region = "region",
+}
