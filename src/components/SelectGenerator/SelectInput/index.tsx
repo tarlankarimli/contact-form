@@ -1,73 +1,43 @@
 import React from "react";
+import Select from "react-select";
 
 import { IItem } from "api";
-import Select from "react-select";
+import { selectInputStyle } from "./selectInputStyle";
+import { IContactUsFormValues } from "views/ContactUs/model";
 
 interface IProps {
   /** Options */
   options: IItem[];
 
+  /** Field */
+  field: keyof IContactUsFormValues;
+
+  /** Values */
+  values: IContactUsFormValues;
+
   /** Select action */
-  onSelect: (value: string) => void;
+  onSelect: (value: IItem) => void;
 
   /** Placeholder */
   placeholder?: string;
+
+  /** Error */
+  error: boolean;
 }
 
 const SelectInput: React.FC<IProps> = (props: IProps) => {
-  const { options, onSelect, placeholder } = props;
-
-  const colourStyles = {
-    control: (styles: {}) => ({
-      ...styles,
-      backgroundColor: "#A6D0D8",
-      border: "none",
-      boxShadow: "none",
-      borderBottom: "1px solid #000",
-      borderRadius: "none",
-      marginRight: "10%",
-      "&:hover": {
-        borderBottom: "1px solid #000",
-      },
-      height: "4.8rem"
-    }),
-    menuList: (styles: {}) => ({
-      ...styles,
-      background: "#A6D0D8",
-      border: "1px solid #000",
-    }),
-    option: (styles: {}) => ({
-      ...styles,
-      backgroundColor: "#A6D0D8",
-      color: "#000",
-      "&:hover": {
-        backgroundColor: "#00000042",
-      },
-    }),
-    dropdownIndicator: (styles: {}) => ({
-      ...styles,
-      color: "#0000042",
-    }),
-    "&:hover": {
-      backgroundColor: "#0000042",
-    },
-    placeholder: (styles: {}) => ({
-      ...styles,
-      opacity: "0.5",
-      color: "#000",
-    }),
-   
-  };
+  const { options, onSelect, placeholder, error, field, values } = props;
 
   return (
     <>
       <Select
-        onChange={(value) => onSelect(value.id)}
+        onChange={(value) => onSelect(value as IItem)}
         options={options}
-        getOptionLabel={(option) => option.name}
-        getOptionValue={(option) => option.id}
-        styles={colourStyles}
+        getOptionLabel={(option: IItem) => option.name}
+        getOptionValue={(option: IItem) => option.id}
+        styles={selectInputStyle(error)}
         placeholder={placeholder}
+        value={(values[field] || placeholder) as IItem}
       />
     </>
   );

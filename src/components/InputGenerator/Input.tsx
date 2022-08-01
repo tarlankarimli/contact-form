@@ -1,28 +1,33 @@
+import { IContactUsFormValues } from "views/ContactUs/model";
 
 interface IProps {
-  /** Classname */
-  className: string;
-
   /** Type */
   type: string;
 
   /** Placeholder */
   placeholder: string;
 
-  /** Required */
-  required: boolean;
+  /** Field */
+  field: keyof IContactUsFormValues;
+
+  /** Values */
+  values: IContactUsFormValues;
 
   /** Handle selected value */
   onSelect: (value: string) => void;
+
+  /** Error */
+  error: boolean;
 }
 
 const Input: React.FC<IProps> = (props: IProps) => {
-  const { className, type, placeholder, onSelect, required = false } = props;
+  const { type, placeholder, error, values, onSelect, field } = props;
+
   return (
     <input
-      className={className}
+      className={error ? "contact-input-error" : null}
+      value={values[field] as string}
       type={type}
-      required={required}
       placeholder={placeholder}
       onChange={(e) => onSelect(e.target.value)}
     />

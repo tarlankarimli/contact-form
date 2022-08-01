@@ -1,13 +1,33 @@
+import { IItem } from "api";
+
 export interface IContactUsFormValues {
-    /** Country */
-    country: string;
+  /** Country */
+  country: IItem;
 
-    /** Industry */
-    industry: string;
+  /** Industry */
+  industry: IItem;
 
-    /** Region */
-    region: string;
+  /** Region */
+  region: IItem;
 
-    /** Firstname */
-    firstname: string;
+  /** First name */
+  firstName: string;
+
+  /** Last name */
+  lastName: string;
+
+  /** Email */
+  email: string;
+
+  /** Job title */
+  jobTitle: string;
+
+  /** Company name */
+  companyName: string;
+
+  /** Term policy */
+  termPolicy: boolean;
+
+  /** Newsletter */
+  newsletter: boolean;
 }

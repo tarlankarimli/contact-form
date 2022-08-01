@@ -1,7 +1,9 @@
 import React from "react";
+import { FormikErrors } from "formik";
 
-import { IInputField } from "models";
 import Input from "./Input";
+import { IInputField } from "models";
+import { IContactUsFormValues } from "views/ContactUs/model";
 
 interface IProps {
   /** Input fields */
@@ -10,25 +12,32 @@ interface IProps {
   /** Classname */
   className: string;
 
-  /** Handle selected value */
-  onSelect: (field: string, value: string) => void;
+  /** Handle input change value */
+  handleInputChange: (field: string, value: string | boolean) => void;
+
+  /** Errors */
+  errors: FormikErrors<IContactUsFormValues>;
+
+  /** Values */
+  values: IContactUsFormValues;
 }
 
 const InputGenerator: React.FC<IProps> = (props: IProps) => {
-  const { inputFields, className, onSelect } = props;
+  const { inputFields, className, errors, values, handleInputChange } = props;
 
   return (
     <>
       {Object.keys(inputFields)?.map((field) => {
-        const { required, type, placeholder } = inputFields[field];
+        const { type, placeholder } = inputFields[field];
         return (
           <div className={className} key={field}>
             <Input
-              className={className}
-              onSelect={(value) => onSelect(field, value)}
-              required={required}
+              onSelect={(value) => handleInputChange(field, value)}
+              values={values}
+              field={field as keyof IContactUsFormValues}
               type={type}
               placeholder={placeholder}
+              error={!!errors[field as keyof IContactUsFormValues]}
             />
           </div>
         );

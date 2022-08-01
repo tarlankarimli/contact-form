@@ -58,7 +58,6 @@
         opacity: 0.5;
       }
     }
- 
   }
 
   &-textarea {
@@ -110,7 +109,7 @@
   .link-underline:after {
     display: block;
     content: "";
-    border-bottom: solid 1px #000;
+    border-bottom: solid 1px $color-black;
     transform: scaleX(1);
     transform-origin: bottom left;
     transition: transform 0.5s ease-out;
@@ -122,6 +121,10 @@
 
   .contact-input {
     margin-bottom: 2rem;
+
+    &-error {
+      border: 1px solid #ff0000;
+    }
   }
   .contact-select-input {
     margin-bottom: 4rem;

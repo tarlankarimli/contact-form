@@ -1,7 +1,9 @@
 import { Suspense } from "react";
 
-import { ISelectField } from "models";
+import { IItem } from "api";
 import { useAsyncEventDispatch } from "hooks/useAsyncEventDispatch";
+import { ISelectField } from "models";
+import { IContactUsFormValues } from "views/ContactUs/model";
 
 interface IProps {
   /** Field */
@@ -10,12 +12,18 @@ interface IProps {
   /** Select fields */
   selectFields: ISelectField;
 
+  /** Values */
+  values: IContactUsFormValues;
+
   /** Handle selected value */
-  onSelect: (value: string) => void;
+  onSelect: (value: IItem) => void;
+
+  /** Error */
+  error: boolean;
 }
 
 export const SelectPageComponent: React.FC<IProps> = (props: IProps) => {
-  const { field, selectFields, onSelect } = props;
+  const { field, selectFields, error, values, onSelect } = props;
 
   const Component = selectFields[field].component;
 
@@ -29,10 +37,12 @@ export const SelectPageComponent: React.FC<IProps> = (props: IProps) => {
       <>
         <Suspense fallback="Select field..">
           <Component
+            values={values}
             onSelect={onSelect}
             options={selectData.data}
             field={field}
             placeholder={selectFields[field].placeholder}
+            error={error}
           />
         </Suspense>
       </>

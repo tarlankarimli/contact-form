@@ -8,9 +8,9 @@ const CompanyContacts = () => {
         </div>
       </div>
       <div className="company-contacts-item">
-        <p className="contact-title">Media enquiries:</p>
+        <p className="contact-title">Career questions:</p>
         <div>
-          <a href="mailto:press@tuumplatform.com">press@tuumplatform.com</a>
+          <a href="mailto:press@tuumplatform.com">careers@tuumplatform.com</a>
         </div>
       </div>
     </div>

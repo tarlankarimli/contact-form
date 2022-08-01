@@ -1,8 +1,10 @@
 import React from "react";
+import { FormikErrors } from "formik";
 
-import { SelectPageComponent } from "./SelectPageComponent";
-
+import { IItem } from "api";
 import { ISelectField } from "models";
+import { SelectPageComponent } from "./SelectPageComponent";
+import { IContactUsFormValues } from "views/ContactUs/model";
 
 interface IProps {
   /** Select fields */
@@ -11,12 +13,18 @@ interface IProps {
   /** Classname */
   className: string;
 
-  /** Handle selected value */
-  onSelect: (field: string, value: string) => void;
+  /** Values */
+  values: IContactUsFormValues;
+
+  /** Errors */
+  errors: FormikErrors<IContactUsFormValues>;
+
+  /** Handle select change */
+  handleSelectChange: (key: string, value: IItem, formValue: string) => void;
 }
 
 const SelectGenerator: React.FC<IProps> = (props: IProps) => {
-  const { selectFields, className, onSelect } = props;
+  const { selectFields, className, errors, values, handleSelectChange } = props;
 
   return (
     <>
@@ -24,9 +32,13 @@ const SelectGenerator: React.FC<IProps> = (props: IProps) => {
         return (
           <div className={className} key={field}>
             <SelectPageComponent
-              field={field}
+              field={field as keyof IContactUsFormValues}
+              values={values}
+              error={!!errors[field as keyof IContactUsFormValues]}
               selectFields={selectFields}
-              onSelect={(value) => onSelect(field, value)}
+              onSelect={(value) =>
+                handleSelectChange(field, value, selectFields[field].get(value))
+              }
             />
           </div>
         );

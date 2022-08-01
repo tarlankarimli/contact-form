@@ -1,4 +1,6 @@
 import { AxiosRequestConfig } from "axios";
+
+import { IItem } from "api";
 import { EProcessStatus } from "enums";
 
 /**
@@ -56,24 +58,24 @@ export interface IRestClient {
   ) => Promise<TResponseData>;
 }
 
-
 /** Select field model */
 export interface ISelectField {
   [key: string]: {
-      placeholder?: string;
-      label?: string;
-      eventname?: string;
-      service?: () => {};
-      component?: React.ComponentType<any>;
+    placeholder?: string;
+    label?: string;
+    eventname?: string;
+    service?: () => {};
+    component?: React.ComponentType<any>;
+    get?: (value: IItem) => string;
   };
 }
 
 /** Input field model */
 export interface IInputField {
   [key: string]: {
-      placeholder?: string;
-      type?: string;
-      required?: boolean;
-      component?: React.ComponentType<any>;
+    placeholder?: string;
+    type?: string;
+    required?: boolean;
+    component?: React.ComponentType<any>;
   };
 }

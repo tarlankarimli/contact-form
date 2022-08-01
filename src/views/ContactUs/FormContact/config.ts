@@ -2,7 +2,13 @@ import React from "react";
 
 import { EInputFields, ESelectFields } from "enums";
 import { IInputField, ISelectField } from "models";
-import { ContactUsServices, ICountriesRs, IIndustryRs, IRegionRs } from "api";
+import {
+  ContactUsServices,
+  ICountriesRs,
+  IIndustryRs,
+  IItem,
+  IRegionRs,
+} from "api";
 
 /** Contact form selects */
 export const contactFormSelects: ISelectField = {
@@ -10,6 +16,9 @@ export const contactFormSelects: ISelectField = {
     eventname: "FETCH_COUNTRIES",
     placeholder: "Country*",
     service: (): Promise<ICountriesRs> => ContactUsServices.fetchCountries(),
+    get(item: IItem) {
+      return item.id;
+    },
     component: React.lazy(
       () => import("components/SelectGenerator/SelectInput")
     ),
@@ -18,6 +27,9 @@ export const contactFormSelects: ISelectField = {
     eventname: "FETCH_INDUSTRY",
     placeholder: "Industry*",
     service: (): Promise<IIndustryRs> => ContactUsServices.fetchIndustry(),
+    get(item: IItem) {
+      return item.id;
+    },
     component: React.lazy(
       () => import("components/SelectGenerator/SelectInput")
     ),
@@ -26,6 +38,9 @@ export const contactFormSelects: ISelectField = {
     eventname: "FETCH_REGION",
     placeholder: "Region",
     service: (): Promise<IRegionRs> => ContactUsServices.fetchRegion(),
+    get(item: IItem) {
+      return item.id;
+    },
     component: React.lazy(
       () => import("components/SelectGenerator/SelectInput")
     ),
