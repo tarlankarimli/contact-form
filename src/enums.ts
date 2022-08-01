@@ -24,3 +24,12 @@ export enum ESelectFields {
   industry = "source",
   region = "region",
 }
+
+  /** Input fields */
+export enum EInputFields {
+  firstName = "firstName",
+  lastName = "lastName",
+  email = "email",
+  jobTitle = "jobTitle",
+  companyName = "companyName",
+}

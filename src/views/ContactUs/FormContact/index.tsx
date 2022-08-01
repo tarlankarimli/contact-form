@@ -1,6 +1,7 @@
+import InputGenerator from "components/InputGenerator";
 import SelectGenerator from "components/SelectGenerator";
 import { IContactUsFormValues } from "../model";
-import { contactFormSelects } from "./config";
+import { contactFormInputs, contactFormSelects } from "./config";
 
 interface IProps {
   /** Values */
@@ -13,65 +14,19 @@ interface IProps {
 const FormContact: React.FC<IProps> = (props: IProps) => {
   const { values, onSelect } = props;
 
-  // const fieldOnChange = (element: React.ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value } = element.target;
-  //   handleFieldChange(name)(value);
-  // };
-// console.log("sss: ", values)
   return (
     <div className="form-contact my-4">
       <form>
-        <div className="form-contact-container">
-          <input
-            type="text"
-            required
-            placeholder="First name*"
-            name="country"
-            // onChange={fieldOnChange}
-          />
-        </div>
-        <div className="form-contact-container">
-          <input
-            type="text"
-            placeholder="Last name"
-            className="contact-input"
-          />
-        </div>
-        <div className="form-contact-container">
-          <input
-            type="text"
-            placeholder="Last name"
-            className="contact-input"
-          />
-        </div>
-        <div className="form-contact-container">
-          <input
-            type="email"
-            required
-            placeholder="Email*"
-            className="contact-input"
-          />
-        </div>
-        <div className="form-contact-container">
-          <input
-            type="text"
-            required
-            placeholder="Company name*"
-            className="contact-input"
-          />
-        </div>
-        <div className="form-contact-container">
-          <input
-            type="text"
-            placeholder="Job title"
-            className="contact-input"
-          />
-        </div>
-          <SelectGenerator
-            onSelect={onSelect}
-            selectFields={contactFormSelects}
-            className={"form-contact-container"}
-          />
+        <InputGenerator
+          onSelect={onSelect}
+          inputFields={contactFormInputs}
+          className={"form-contact-container contact-input"}
+        />
+        <SelectGenerator
+          onSelect={onSelect}
+          selectFields={contactFormSelects}
+          className={"form-contact-container contact-select-input"}
+        />
         <div className="form-contact-textarea">
           <p>What would you like to talk about?</p>
           <textarea rows={6}></textarea>

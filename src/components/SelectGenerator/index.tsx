@@ -20,18 +20,17 @@ const SelectGenerator: React.FC<IProps> = (props: IProps) => {
 
   return (
     <>
-      {selectFields &&
-        Object.keys(selectFields)?.map((field) => {
-          return (
-            <div className={className}  key={field}>
-              <SelectPageComponent
-                field={field}
-                selectFields={selectFields}
-                onSelect={(value) => onSelect(field, value)}
-              />
-            </div>
-          );
-        })}
+      {Object.keys(selectFields)?.map((field) => {
+        return (
+          <div className={className} key={field}>
+            <SelectPageComponent
+              field={field}
+              selectFields={selectFields}
+              onSelect={(value) => onSelect(field, value)}
+            />
+          </div>
+        );
+      })}
     </>
   );
 };

@@ -41,7 +41,7 @@
   &-container {
     float: left;
     width: 50%;
-    margin-bottom: 4rem;
+    font-size: 1.6rem;
 
     input {
       width: 90%;
@@ -58,6 +58,7 @@
         opacity: 0.5;
       }
     }
+ 
   }
 
   &-textarea {
@@ -118,15 +119,11 @@
     transform: scaleX(0);
     transform-origin: bottom left;
   }
-}
-.form-contact-container {
-  // .hello {
-  //   height: 4.8rem;
-  //   border: none;
-  //   border-bottom: 1px solid $color-black;
-  //   background-color: $contactus-bg-color;
-  //   outline: none;
-    font-size: 1.6rem;
- 
-  // }
+
+  .contact-input {
+    margin-bottom: 2rem;
+  }
+  .contact-select-input {
+    margin-bottom: 4rem;
+  }
 }

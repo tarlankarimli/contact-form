@@ -67,3 +67,13 @@ export interface ISelectField {
       component?: React.ComponentType<any>;
   };
 }
+
+/** Input field model */
+export interface IInputField {
+  [key: string]: {
+      placeholder?: string;
+      type?: string;
+      required?: boolean;
+      component?: React.ComponentType<any>;
+  };
+}

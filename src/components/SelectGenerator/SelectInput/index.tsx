@@ -29,6 +29,7 @@ const SelectInput: React.FC<IProps> = (props: IProps) => {
       "&:hover": {
         borderBottom: "1px solid #000",
       },
+      height: "4.8rem"
     }),
     menuList: (styles: {}) => ({
       ...styles,
