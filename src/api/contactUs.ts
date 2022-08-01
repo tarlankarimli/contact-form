@@ -25,6 +25,49 @@ export interface ICountry {
     dial_code: string;
 }
 
+/** User contact model */
+export interface IUserContact {
+     /** Country */
+  country: string;
+
+  /** Industry */
+  industry: string;
+
+  /** Region */
+  region: string;
+
+  /** First name */
+  firstName: string;
+
+  /** Last name */
+  lastName: string;
+
+  /** Email */
+  email: string;
+
+  /** Job title */
+  jobTitle: string;
+
+  /** Company name */
+  companyName: string;
+
+  /** Description */
+  description: string;
+
+  /** Term policy */
+  termPolicy: boolean;
+
+  /** Newsletter */
+  newsletter: boolean;
+}
+
+// Request model
+
+/** User contact request model */
+export interface IUserContactRq extends IUserContact{}
+
+// Response model
+
 /** Industry model */
 export interface IIndustry extends IItem{}
 
@@ -54,6 +97,9 @@ const endpoints = {
         region(): string {
             return "/region";
         },
+        userContact(): string {
+            return "/user-contact";
+        },
     },
 };
 
@@ -70,4 +116,8 @@ export const ContactUsServices = {
 
     /** Fetch region */
     fetchRegion: (): Promise<IRegionRs> => restClient.get<IRegionRs>(endpoints.contactUs.region()),
+
+    /** Post user contact */
+    userContact: <IUserContactRq>(payload: IUserContactRq): Promise<void> =>
+        restClient.post<IUserContactRq, void>(endpoints.contactUs.userContact(), payload),
 };

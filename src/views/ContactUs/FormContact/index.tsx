@@ -2,7 +2,7 @@ import { IItem } from "api";
 import InputGenerator from "components/InputGenerator";
 import SelectGenerator from "components/SelectGenerator";
 import { contactFormInputs, contactFormSelects } from "./config";
-import { EPolicyFields } from "enums";
+import { EInputFields, EPolicyFields } from "enums";
 import { FormikErrors } from "formik";
 import { IContactUsFormValues } from "../model";
 
@@ -53,7 +53,13 @@ const FormContact: React.FC<IProps> = (props: IProps) => {
         />
         <div className="form-contact-textarea">
           <p>What would you like to talk about?</p>
-          <textarea rows={6}></textarea>
+          <textarea
+            rows={6}
+            value={values.description || ""}
+            onChange={(e) =>
+              handleInputChange(EInputFields.description, e.target.value)
+            }
+          ></textarea>
         </div>
         <div className="form-terms">
           <div className="term-policy">

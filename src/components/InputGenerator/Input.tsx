@@ -26,7 +26,7 @@ const Input: React.FC<IProps> = (props: IProps) => {
   return (
     <input
       className={error ? "contact-input-error" : null}
-      value={values[field] as string}
+      value={(values[field] || "" )as string}
       type={type}
       placeholder={placeholder}
       onChange={(e) => onSelect(e.target.value)}

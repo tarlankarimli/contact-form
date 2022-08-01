@@ -1,7 +1,5 @@
 import React from "react";
 
-import { EInputFields, ESelectFields } from "enums";
-import { IInputField, ISelectField } from "models";
 import {
   ContactUsServices,
   ICountriesRs,
@@ -9,11 +7,14 @@ import {
   IItem,
   IRegionRs,
 } from "api";
+import { EInputFields, ESelectFields } from "enums";
+import { FETCH_COUNTRIES, FETCH_INDUSTRY, FETCH_REGION } from "eventTypes";
+import { IInputField, ISelectField } from "models";
 
 /** Contact form selects */
 export const contactFormSelects: ISelectField = {
   [ESelectFields.country]: {
-    eventname: "FETCH_COUNTRIES",
+    eventname: FETCH_COUNTRIES,
     placeholder: "Country*",
     service: (): Promise<ICountriesRs> => ContactUsServices.fetchCountries(),
     get(item: IItem) {
@@ -24,7 +25,7 @@ export const contactFormSelects: ISelectField = {
     ),
   },
   [ESelectFields.industry]: {
-    eventname: "FETCH_INDUSTRY",
+    eventname: FETCH_INDUSTRY,
     placeholder: "Industry*",
     service: (): Promise<IIndustryRs> => ContactUsServices.fetchIndustry(),
     get(item: IItem) {
@@ -35,7 +36,7 @@ export const contactFormSelects: ISelectField = {
     ),
   },
   [ESelectFields.region]: {
-    eventname: "FETCH_REGION",
+    eventname: FETCH_REGION,
     placeholder: "Region",
     service: (): Promise<IRegionRs> => ContactUsServices.fetchRegion(),
     get(item: IItem) {

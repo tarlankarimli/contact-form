@@ -32,6 +32,7 @@ export enum EInputFields {
   email = "email",
   jobTitle = "jobTitle",
   companyName = "companyName",
+  description = "description",
 }
 
 /** Policy fields */

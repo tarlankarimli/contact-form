@@ -10,9 +10,9 @@ interface IPublishAsyncEvent {
   eventName: string;
   fn: Function;
   initialValue?: IAsyncData<unknown>;
-  onPending: (res: any) => void;
-  onSuccess: (res: any) => void;
-  onError: (res: any) => void;
+  onPending?: (res: any) => void;
+  onSuccess?: (res: any) => void;
+  onError?: (res: any) => void;
   onAll?: (res: any) => void;
 }
 

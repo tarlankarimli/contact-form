@@ -1,19 +1,29 @@
 import { useState } from "react";
 
-import { IItem } from "api";
+import { ContactUsServices, IItem, IUserContact } from "api";
 import CompanyContacts from "./CompanyContacts";
+import { CREATE_USER_CONTACT } from "eventTypes";
 import FormContact from "./FormContact";
+import { publishAsyncEvent } from "hooks/pubSub";
 import { useFormHandler } from "./useFormHandler";
 
 import "./index.scss";
 
 const ContactUs = () => {
-  const [formValues, setFormValues] = useState({});
+  const [formValues, setFormValues] = useState<IUserContact>();
+
+  const submitUserContact = () => {
+    publishAsyncEvent({
+      eventName: CREATE_USER_CONTACT,
+      fn: () => ContactUsServices.userContact( formValues),
+    });
+  };
 
   /** Handle form submit */
   const handleSubmit = () => {
     resetForm();
-    setFormValues({});
+    setFormValues({} as IUserContact);
+    submitUserContact();
   };
 
   /** Handle input change */

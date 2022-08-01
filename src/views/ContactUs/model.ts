@@ -25,6 +25,9 @@ export interface IContactUsFormValues {
   /** Company name */
   companyName: string;
 
+  /** Description */
+  description: string;
+
   /** Term policy */
   termPolicy: boolean;
 
