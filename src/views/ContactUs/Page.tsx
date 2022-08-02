@@ -7,22 +7,27 @@ import FormContact from "./FormContact";
 import { publishAsyncEvent } from "hooks/pubSub";
 import { useFormHandler } from "./useFormHandler";
 
-import "./index.scss";
+import { useEventListener } from "hooks/useEventListener";
 
 const ContactUs = () => {
   const [formValues, setFormValues] = useState<IUserContact>();
+  const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
   const submitUserContact = () => {
     publishAsyncEvent({
       eventName: CREATE_USER_CONTACT,
-      fn: () => ContactUsServices.userContact( formValues),
+      fn: () => ContactUsServices.userContact(formValues),
+      onSuccess: () => {
+        resetForm();
+        setFormValues({} as IUserContact);
+      },
     });
   };
 
+  useEventListener(CREATE_USER_CONTACT, [() => setErrorMessage(true)]);
+
   /** Handle form submit */
   const handleSubmit = () => {
-    resetForm();
-    setFormValues({} as IUserContact);
     submitUserContact();
   };
 
@@ -54,19 +59,25 @@ const ContactUs = () => {
   return (
     <>
       <div className="contact-us py-8">
-        <div className="container">
-          <div className="contact-us-body">
-            <h4 className="contact-us-header">Contact us</h4>
-            <CompanyContacts />
-            <FormContact
-              values={values}
-              handleInputChange={handleInputChange}
-              handleSelectChange={handleSelectChange}
-              handleSubmit={() => formik.handleSubmit()}
-              errors={errors}
-            />
+        {errorMessage ? (
+          <div>
+            <h3 className="error-message">Something went wrong</h3>
           </div>
-        </div>
+        ) : (
+          <div className="container">
+            <div className="contact-us-body">
+              <h4 className="contact-us-header">Contact us</h4>
+              <CompanyContacts />
+              <FormContact
+                values={values}
+                handleInputChange={handleInputChange}
+                handleSelectChange={handleSelectChange}
+                handleSubmit={() => formik.handleSubmit()}
+                errors={errors}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
